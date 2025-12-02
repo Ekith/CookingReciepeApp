@@ -1,24 +1,61 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
+    useNavigate
+} from "react-router-dom";
+
+
+import ListeRecetteView from "./View/View/ListeRecetteView";
+import CreerRecette from "./View/Create/CreerRecette";
+import UpBar from "./View/Bar/UpBar";
+import Login from "./View/Login";
+
+import { createClient } from '@supabase/supabase-js';
+import HomePage from "./View/HomePage";
+import PrivateRoute from "./PrivateRoute";
+
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL as string;
+const supabaseapikey = process.env.REACT_APP_SUPABASE_API_KEY as string;
+export const supabase = createClient(supabaseUrl, supabaseapikey);
+
+
 function App() {
-  return (
+
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+        <UpBar/>
+
+        <Router>
+            <Routes>
+                {/* Route accessible par tous*/}
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<Login />} />
+
+                {/* Route non accessible par tous*/}
+                <Route
+                    path="/creer-recette"
+                    element={
+                    <PrivateRoute>
+                        <CreerRecette />
+                    </PrivateRoute>
+                } />
+                <Route
+                    path="/recettes"
+                    element={
+                    <PrivateRoute>
+                        <ListeRecetteView />
+                    </PrivateRoute>
+                } />
+            </Routes>
+        </Router>
+
+
     </div>
   );
 }
