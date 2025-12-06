@@ -1,7 +1,7 @@
 // File: src/View/Login.tsx
-import React, { useState } from 'react';
-import { supabase } from '../App';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {supabase} from '../App';
+import {useNavigate} from 'react-router-dom';
 
 
 function Login() {

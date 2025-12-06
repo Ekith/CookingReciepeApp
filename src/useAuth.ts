@@ -1,7 +1,7 @@
 // File: src/useAuth.ts
-import { useState, useEffect } from 'react';
-import { supabase } from './App';
-import { User } from '@supabase/supabase-js';
+import {useEffect, useState} from 'react';
+import {supabase} from './App';
+import {User} from '@supabase/supabase-js';
 
 interface AuthState {
     user: User | null;

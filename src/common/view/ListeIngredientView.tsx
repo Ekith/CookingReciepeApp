@@ -1,4 +1,4 @@
-import Ingredient from "../../Controller/Ingredient";
+import Ingredient from "../../utils/Ingredient";
 import IngredientView from "./IngredientView";
 
 

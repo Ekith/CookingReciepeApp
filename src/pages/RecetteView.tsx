@@ -1,12 +1,11 @@
-
-import Reciepe from '../../Controller/Reciepe';
-import ListeIngredientView from "./ListeIngredientView";
-import ListeEtapeView from "./ListeEtapeView";
+import Reciepe from '../utils/Reciepe';
+import ListeIngredientView from "../common/view/ListeIngredientView";
+import ListeEtapeView from "../common/view/ListeEtapeView";
 import {useEffect, useState} from "react";
-import {supabase} from "../../App";
-import Ingredient from "../../Controller/Ingredient";
-import Step from "../../Controller/Step";
-import {Navigate, useLocation} from "react-router-dom";
+import {supabase} from "../App";
+import Ingredient from "../utils/Ingredient";
+import Step from "../utils/Step";
+import {useLocation} from "react-router-dom";
 
 
 function RecetteView() {

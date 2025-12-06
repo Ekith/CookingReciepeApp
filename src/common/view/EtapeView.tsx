@@ -1,8 +1,7 @@
-import Step from "../../Controller/Step";
+import Step from "../../utils/Step";
 import {useEffect, useState} from "react";
 import {supabase} from "../../App";
-import ReciepeStep from "../../Controller/ReciepeStep";
-
+import ReciepeStep from "../../utils/ReciepeStep";
 
 
 function EtapeView({etape} : {etape : Step}) {

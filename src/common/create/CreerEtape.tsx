@@ -1,5 +1,4 @@
-import { StepTmp } from "./types";
-import { FieldUpdaterTmp } from "./types";
+import {FieldUpdaterTmp, StepTmp} from "../../utils/types";
 
 interface CreerEtapeProps {
     data: StepTmp;

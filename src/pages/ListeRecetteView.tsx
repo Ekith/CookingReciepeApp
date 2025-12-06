@@ -1,8 +1,7 @@
-import Reciepe from "../../Controller/Reciepe";
-import RecetteView from "./RecetteView";
+import Reciepe from "../utils/Reciepe";
 import {useEffect, useState} from "react";
-import {supabase} from "../../App";
-import {useAuth} from "../../useAuth";
+import {supabase} from "../App";
+import {useAuth} from "../useAuth";
 import {useNavigate} from "react-router-dom";
 
 

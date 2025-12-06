@@ -21,7 +21,7 @@ function UpBar() {
     return (
         <header className="upbar">
             <h1 className="app-title">
-                <a href="/" className="logo">
+                <a href="/public" className="logo">
                     Cooking Reciepe
                 </a>
             </h1>

@@ -1,4 +1,4 @@
-import Ingredient from "../../Controller/Ingredient";
+import Ingredient from "../../utils/Ingredient";
 
 
 function IngredientView({ingredient}: { ingredient: Ingredient })

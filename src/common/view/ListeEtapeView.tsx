@@ -1,4 +1,4 @@
-import Step from "../../Controller/Step";
+import Step from "../../utils/Step";
 import EtapeView from "./EtapeView";
 
 

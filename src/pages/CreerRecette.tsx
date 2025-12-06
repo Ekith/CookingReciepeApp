@@ -1,10 +1,8 @@
 import {useState} from "react";
-import {IngredientTmp, RecipeTmp, StepTmp} from "./types";
-import ListeCreerIngredient from "./ListeCreerIngredient";
-import ListeCreerEtape from "./ListeCreerEtape";
-import {supabase} from "../../App";
-
-
+import {IngredientTmp, RecipeTmp, StepTmp} from "../utils/types";
+import ListeCreerIngredient from "../common/create/ListeCreerIngredient";
+import ListeCreerEtape from "../common/create/ListeCreerEtape";
+import {supabase} from "../App";
 
 
 export default function CreerRecette() {

@@ -1,5 +1,4 @@
-import { IngredientTmp } from "./types";
-import { FieldUpdaterTmp } from "./types";
+import {FieldUpdaterTmp, IngredientTmp} from "../../utils/types";
 
 interface CreerIngredientProps {
     data: IngredientTmp;

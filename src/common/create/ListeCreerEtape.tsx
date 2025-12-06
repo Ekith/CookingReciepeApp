@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { StepTmp } from "./types";
+import {useState} from "react";
+import {StepTmp} from "../../utils/types";
 import CreerEtape from "./CreerEtape";
 
 interface ListeCreerEtapeProps {

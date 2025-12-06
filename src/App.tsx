@@ -5,26 +5,20 @@ import './style/common.css';
 import './style/style.css';
 
 
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-    useNavigate
-} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 
-import ListeRecetteView from "./View/View/ListeRecetteView";
-import CreerRecette from "./View/Create/CreerRecette";
-import UpBar from "./View/Bar/UpBar";
-import Login from "./View/Login";
+import ListeRecetteView from "./pages/ListeRecetteView";
+import CreerRecette from "./pages/CreerRecette";
+import UpBar from "./common/Bar/UpBar";
+import Login from "./pages/Login";
 
-import { createClient } from '@supabase/supabase-js';
-import HomePage from "./View/HomePage";
+import {createClient} from '@supabase/supabase-js';
+import HomePage from "./pages/HomePage";
 import PrivateRoute from "./PrivateRoute";
 import {useAuth} from "./useAuth";
-import Disconnect from "./View/Disconnect";
-import RecetteView from "./View/View/RecetteView";
+import Disconnect from "./pages/Disconnect";
+import RecetteView from "./pages/RecetteView";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL as string;
 const supabaseapikey = process.env.REACT_APP_SUPABASE_API_KEY as string;
@@ -42,25 +36,23 @@ function App() {
 
         <UpBar/>
 
-        <Router>
-            <Routes>
-                {/* Route accessible par tous*/}
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/reciepes" element={<ListeRecetteView />} />
-                <Route path="/reciepe" element={<RecetteView />} />
-                <Route path="/disconnect" element={<Disconnect />}/>
+        <Routes>
+            {/* Route accessible par tous*/}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/reciepes" element={<ListeRecetteView />} />
+            <Route path="/reciepe" element={<RecetteView />} />
+            <Route path="/disconnect" element={<Disconnect />}/>
 
-                {/* Route non accessible par tous*/}
-                <Route
-                    path="/create-reciepe"
-                    element={
-                    <PrivateRoute>
-                        <CreerRecette />
-                    </PrivateRoute>
-                } />
-            </Routes>
-        </Router>
+            {/* Route non accessible par tous*/}
+            <Route
+                path="/create-reciepe"
+                element={
+                <PrivateRoute>
+                    <CreerRecette />
+                </PrivateRoute>
+            } />
+        </Routes>
 
 
     </div>

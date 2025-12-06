@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { IngredientTmp } from "./types";
+import {useState} from "react";
+import {IngredientTmp} from "../../utils/types";
 import CreerIngredient from "./CreerIngredient";
 
 interface ListeCreerIngredientProps {
