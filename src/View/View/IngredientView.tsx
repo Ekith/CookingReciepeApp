@@ -7,7 +7,7 @@ function IngredientView({ingredient}: { ingredient: Ingredient })
         <div className="sub-container">
             <h1 className="tinyTitle">{ingredient.name}</h1>
             <p className="normal-text">
-                {ingredient.quantity > 0 ? ingredient.quantity : ''}{ingredient.unit}
+                {ingredient.quantity > 0 ? ingredient.quantity : ''} {ingredient.unit}
             </p>
         </div>
     );

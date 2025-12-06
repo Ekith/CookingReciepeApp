@@ -33,7 +33,14 @@ export default function CreerRecette() {
     };
 
     const handleSubmit = async () => {
-        console.log("RECETTE :", recipeData);
+
+        const confirmDelete = window.confirm(
+            "Voulez-vous enregistrer cette recette ?"
+        );
+
+        if (!confirmDelete) {
+            return;
+        }
 
         const { data : id, error } = await supabase
             .from('reciepe')
@@ -61,7 +68,6 @@ export default function CreerRecette() {
             }
 
             const ingredientId = id ? id[0].id : -1;
-            console.log("Ingr", ingredientId);
             await supabase
                 .from('a_reciepe_ingredient')
                 .insert([
@@ -91,7 +97,7 @@ export default function CreerRecette() {
                 return;
             }
         }
-        window.location.href = "/recettes";
+        window.location.href = "/reciepes";
 
     };
 

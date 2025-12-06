@@ -24,6 +24,7 @@ import HomePage from "./View/HomePage";
 import PrivateRoute from "./PrivateRoute";
 import {useAuth} from "./useAuth";
 import Disconnect from "./View/Disconnect";
+import RecetteView from "./View/View/RecetteView";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL as string;
 const supabaseapikey = process.env.REACT_APP_SUPABASE_API_KEY as string;
@@ -37,7 +38,7 @@ function App() {
     console.log(user, loading);
 
     return (
-    <div className="App">
+    <div className="App global-container">
 
         <UpBar/>
 
@@ -46,12 +47,13 @@ function App() {
                 {/* Route accessible par tous*/}
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/recettes" element={<ListeRecetteView />} />
+                <Route path="/reciepes" element={<ListeRecetteView />} />
+                <Route path="/reciepe" element={<RecetteView />} />
                 <Route path="/disconnect" element={<Disconnect />}/>
 
                 {/* Route non accessible par tous*/}
                 <Route
-                    path="/creer-recette"
+                    path="/create-reciepe"
                     element={
                     <PrivateRoute>
                         <CreerRecette />

@@ -6,8 +6,8 @@ type NavItem = { label: string; href: string, needsAuth: boolean };
 
 const navItems: NavItem[] = [
     { label: "Accueil", href: "/", needsAuth: false },
-    { label: "Recettes", href: "/recettes", needsAuth: false },
-    { label: "Creer recette", href: "/creer-recette", needsAuth : true },
+    { label: "Recettes", href: "/reciepes", needsAuth: false },
+    { label: "Creer recette", href: "/create-reciepe", needsAuth : true },
     { label: "Login", href: "/login", needsAuth : false },
     { label: "Disconnect", href: "/disconnect", needsAuth : true },
 ];
@@ -22,7 +22,7 @@ function UpBar() {
         <header className="upbar">
             <h1 className="app-title">
                 <a href="/" className="logo">
-                    Cooking Reciepe App
+                    Cooking Reciepe
                 </a>
             </h1>
             <nav className="nav-links">

@@ -6,21 +6,28 @@ import {useEffect, useState} from "react";
 import {supabase} from "../../App";
 import Ingredient from "../../Controller/Ingredient";
 import Step from "../../Controller/Step";
+import {Navigate, useLocation} from "react-router-dom";
 
 
-function RecetteView({recette} : {recette : Reciepe}) {
+function RecetteView() {
 
-    const [reciepe, setReciepe] = useState<Reciepe>(recette);
+    const [reciepe, setReciepe] = useState<Reciepe>(new Reciepe(-1, '', '', 0, ''));
     const [listIngredients, setListIngredients] = useState<Ingredient[]>([]);
     const [listStep, setListStep] = useState<Step[]>([]);
 
+    const location = useLocation()
+
     // se déclenche au chargement de la page
     useEffect(() => {
-        fetchReciepies();
-        fetchReciepies2();
+        console.log(location.state)
+        if (location.state?.reciepe) {
+            setReciepe(location.state.reciepe)
+            fetchReciepies(location.state.reciepe);
+            fetchReciepies2(location.state.reciepe);
+        }
     }, [])
 
-    async function fetchReciepies() {
+    async function fetchReciepies(reciepe : Reciepe) {
         let {data: a_reciepe_ingredient, error} = await supabase
             .from('a_reciepe_ingredient')
             .select(`*, ingredient(*)`)
@@ -36,7 +43,7 @@ function RecetteView({recette} : {recette : Reciepe}) {
         }
     }
 
-    async function fetchReciepies2(){
+    async function fetchReciepies2(reciepe : Reciepe) {
         let { data: a_reciepe_step, error } = await supabase
             .from('a_reciepe_step')
             .select(`*, step(*)`)
@@ -49,28 +56,23 @@ function RecetteView({recette} : {recette : Reciepe}) {
             const newStep = new Step(r.step.id, r.step.description, r.order, []);
             setListStep(prevSteps => [...prevSteps, newStep]);
         }
-
     }
 
-
-
-
-
     return (
-    <div className="sub-container">
-        <h1 className="bigTitle">{reciepe.nom}</h1>
         <div className="sub-container">
-            <p className="sub-container normal-text">Quantités pour {reciepe.quantity} {reciepe.unit}</p>
-            <p className="sub-container normal-text">{reciepe.description}</p>
+            <h1 className="bigTitle">{reciepe.nom}</h1>
+            <div className="sub-container">
+                <p className="sub-container normal-text">Quantités pour {reciepe.quantity} {reciepe.unit}</p>
+                <p className="sub-container normal-text">{reciepe.description}</p>
+            </div>
+            <div className="sub-container">
+                <ListeIngredientView listeIngredients={listIngredients}/>
+            </div>
+            <div className="sub-container">
+                <ListeEtapeView listEtape={listStep} />
+            </div>
         </div>
-        <div className="sub-container">
-            <ListeIngredientView listeIngredients={listIngredients}/>
-        </div>
-        <div className="sub-container">
-            <ListeEtapeView listEtape={listStep} />
-        </div>
-
-    </div>
-  );}
+  );
+}
 
 export default RecetteView;

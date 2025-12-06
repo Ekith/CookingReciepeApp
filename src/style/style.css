@@ -98,9 +98,14 @@
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
+.validateButton:hover {
+    /* Assombrir la couleur d'accentuation au survol */
+    background-color: var(--couleur-accent-hover);
+}
+
 .button:hover:not(:disabled) {
     /* Assombrir la couleur d'accentuation au survol */
-    background-color: #006400;
+    background-color: var(--couleur-accent-hover);
 }
 
 .button:disabled {
@@ -177,7 +182,7 @@
 
 .tinyButton:hover:not(:disabled) {
     /* Assombrir la couleur d'accentuation au survol (même règle) */
-    background-color: #006400;
+    background-color: var(--couleur-accent-hover);
 }
 
 .tinyButton:disabled {

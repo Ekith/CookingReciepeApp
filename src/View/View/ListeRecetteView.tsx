@@ -3,17 +3,18 @@ import RecetteView from "./RecetteView";
 import {useEffect, useState} from "react";
 import {supabase} from "../../App";
 import {useAuth} from "../../useAuth";
+import {useNavigate} from "react-router-dom";
 
 
 function ListeRecetteView () {
 
-    const maxColumns = 3;
     const [deleteMode, setDeleteMode] = useState<boolean>(false);
 
-    const [selectedRecette, setSelectedRecette] = useState<Reciepe | null>(null);
     const [reciepies, setReciepes] = useState<Reciepe[]>([]);
 
     const { user, loading } = useAuth()
+    const navigate = useNavigate();
+
 
     // se déclenche au chargement de la page
     useEffect(() => {
@@ -124,16 +125,16 @@ function ListeRecetteView () {
     }
 
 
-    if (selectedRecette) {
-        return (
-            <div className="global-container">
-                <RecetteView recette={selectedRecette} />
-            </div>
-        );
+    function handleClick(reciepe: Reciepe) {
+        navigate('/reciepe', {
+            state: {
+                reciepe: reciepe
+            }
+        })
     }
 
     return (
-        <div className="global-container">
+        <div className="sub-container">
             <h1 className="bigTitle">Recettes :</h1>
 
             {user &&
@@ -148,7 +149,10 @@ function ListeRecetteView () {
                 {reciepies.map((recette) => (
                     <div
                         key={recette.id}
-                        onClick={() => setSelectedRecette(recette)}
+                        onClick={() => {
+                            console.log("blabla", recette);
+                            handleClick(recette)
+                        }}
                         className="card"
                     >
                         <h3 className="tinyTitle">{recette.nom}</h3>

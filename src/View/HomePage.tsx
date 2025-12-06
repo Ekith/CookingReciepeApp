@@ -2,9 +2,10 @@
 function HomePage () {
 
     return (
-    <div className="global-container">
-        <h1 className="bigTitle">Welcome to the Home Page</h1>
-        <p className="normal-text">This is the main landing page of the application.</p>
+    <div className="sub-container">
+        <h1 className="bigTitle">Bienvenue sur Cooking Reciepe</h1>
+        <p className="tinyTitle">Sur ce site, vous pourrez retrouver les différentes recettes que j'ai déjà réalisé.</p>
+        <p className="tinyTitle">N'hésitez pas à parcourir les différentes recettes et à les refaire chez vous !</p>
     </div>
   );
 }

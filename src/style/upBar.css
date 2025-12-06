@@ -43,7 +43,7 @@
 }
 
 .logo:hover {
-    color: #00b300; /* Vert un peu plus clair au survol */
+    color: var(--couleur-accent-hover); /* Vert un peu plus clair au survol */
 }
 
 
@@ -68,6 +68,5 @@
 
 .nav-link:hover {
     /* Les liens deviennent vert clair au survol (couleur accent) */
-    background-color: #2a2a2a; /* Léger fond sombre au survol */
-    color: var(--couleur-accent);
+    color: var(--couleur-accent-hover);
 }
