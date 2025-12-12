@@ -11,7 +11,7 @@ function ListRecipeView () {
 
     const [recipies, setRecipes] = useState<Recipe[]>([]);
 
-    const { user, loading } = useAuth()
+    const { user } = useAuth()
     const navigate = useNavigate();
 
 
@@ -21,10 +21,13 @@ function ListRecipeView () {
     }, [])
 
 
-    async function fetchRecipies(){
+    async function fetchRecipies(filter: string = "") {
+
         let { data: recipe, error } = await supabase
             .from('recipe')
             .select('*')
+            .order("name", { ascending: true })
+            .ilike('name', `%${filter}%`) // Filter by name using case-insensitive LIKE operator
 
         if (error) console.log('erreur')
 
@@ -143,6 +146,18 @@ function ListRecipeView () {
                     </button>
                 </div>
             }
+
+            <div className="sub-container">
+                <input
+                    type="text"
+                    className="entry-tiny"
+                    onChange={
+                        (e) => {
+                            fetchRecipies(e.target.value);
+                        }
+                    }
+                />
+            </div>
 
             <div className="sub-container">
                 {recipies.map((recette) => (

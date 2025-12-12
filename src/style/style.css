@@ -4,9 +4,9 @@
 
 .global-container {
     /* Nouvelle configuration pour ancrer les éléments en haut */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; /* Utilise Flexbox pour la mise en page */
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center; /* Centre les éléments horizontalement */
     justify-content: flex-start; /* Aligne les éléments au début (en haut) du conteneur */
 
     min-height: 100vh; /* Assure que le conteneur prend au moins toute la hauteur de la vue */
@@ -73,6 +73,18 @@
     color: var(--couleur-texte-primaire);
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
     transition: border-color 0.3s ease;
+}
+
+.entry-tiny {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--couleur-bordure);
+    border-radius: 4px;
+    background-color: var(--couleur-fond-principal);
+    color: var(--couleur-texte-primaire);
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+    transition: border-color 0.3s ease;
+    max-width: 35%;
 }
 
 .entry:focus {
@@ -219,6 +231,9 @@
 
     /* Assure qu'il prend la largeur complète de son parent */
     width: 100%;
+
+    /* Centre les éléments enfants */
+    align-items: center;
 
     /* N'applique pas de couleur de fond, donc il est transparent et
        laisse passer le fond du conteneur parent (ex: .form-container) */
